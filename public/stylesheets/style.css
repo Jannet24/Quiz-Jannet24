@@ -16,3 +16,6 @@ nav span             { margin: 0px 10px 0px 0px;
 .right 				 {float: right;}
 
 .quiz_img 			 { height: 150px; float: left;}
+
+#img-author			 {width: 200px; height: 250px; padding-left: 30%;}
+#img-author	img 	 {width: 85%; height: 70%;}
