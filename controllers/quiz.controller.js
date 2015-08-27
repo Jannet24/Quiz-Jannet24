@@ -41,3 +41,21 @@ exports.answer = function(req,res){
 exports.author = function(req, res) {
   res.render('author', {errors: []});
 };
+
+exports.new = function(req, res) {
+  var quiz = models.Quiz.build( // crea objeto quiz 
+    {pregunta: "Pregunta", respuesta: "Respuesta"}
+  );
+
+  res.render('quizes/new', {quiz: quiz});
+};
+
+
+// POST /quizes/create
+exports.create = function(req, res) {
+  var quiz = models.Quiz.build( req.body.quiz );
+  
+  quiz.save({fields: ["pregunta", "respuesta"]}).then( function(){ 
+  	res.redirect('/quizes'); 
+    })      // res.redirect: Redirección HTTP a lista de preguntas
+};
