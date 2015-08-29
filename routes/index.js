@@ -3,12 +3,17 @@ var router = express.Router();
 
 var quizController = require('../controllers/quiz.controller');
 var commentController = require('../controllers/comment.controller');
-
+var sessionController = require('../controllers/session.controller');
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', { title: 'Quiz', errors:[] });
 });
 router.param('quizId', quizController.load);
+
+// Definición de rutas de sesion
+router.get('/login',  sessionController.new);     // formulario login
+router.post('/login', sessionController.create);  // crear sesión
+router.get('/logout', sessionController.destroy); // destruir sesión
 
 router.get('/author',				quizController.author);
 
