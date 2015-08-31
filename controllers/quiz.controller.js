@@ -1,7 +1,11 @@
 var models = require('../models/models.js');
 
 exports.load = function(req, res, next, quizId){
-	models.Quiz.findById(quizId).then(
+	models.Quiz.find(
+  {
+    where: {id : Number(quizId)},
+    include: [{model: models.Comment}]
+    }).then(
 		function(quiz){
 			if (quiz) {
 				req.quiz = quiz;
@@ -24,10 +28,9 @@ exports.index= function(req, res){
     res.render('quizes/index.ejs', {quizes: quizes, errors: []});
   	}).catch(function(error){next(error)});
 };
+
 exports.show = function(req,res){
-	models.Quiz.findById(req.params.quizId).then(function(quiz){
-		res.render('quizes/show',{quiz: req.quiz, errors: []});
-	})
+		res.render('quizes/show', {quiz: req.quiz, errors: []});
 };
 
 exports.answer = function(req,res){
@@ -35,9 +38,12 @@ exports.answer = function(req,res){
 		if (req.query.respuesta === req.quiz.respuesta) {
 			resultado = 'Correcto';
 		}
-		res.render('quizes/answer',{quiz: req.quiz, respuesta: resultado, errors: []});
-		
+		res.render('quizes/answer',
+      { quiz: req.quiz, 
+        respuesta: resultado, 
+        errors: []});
 };
+
 exports.author = function(req, res) {
   res.render('author', {errors: []});
 };
@@ -58,7 +64,7 @@ exports.create = function(req, res) {
   .validate()
   .then(
     function(err){
-      if (err) {sav
+      if (err) {
         res.render('quizes/new', {quiz: quiz, errors: err.errors});
       } else {
         quiz // ee: guarda en DB campos pregunta y respuesta de quiz

@@ -35,7 +35,7 @@ exports.create = function(req, res) {
         req.session.user = {id:user.id, username:user.username};
 
         res.redirect(req.session.redir.toString());// redirección a path anterior a login
-    })
+    });
 };
 
 // DELETE /logout   -- Destruir sesion 
