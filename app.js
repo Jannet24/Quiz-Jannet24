@@ -38,6 +38,20 @@ app.use(function(req, res, next){
     req.session.redir = req.path;
     }
     res.locals.session =  req.session;
+    if (req.session.user) {
+      var maxTimeWithoutReq = 2*60;
+      var now = new Date().getTime();
+      if (!req.session.lastReqTime) {
+        req.session.lastReqTime = now;
+      }
+      var dif = (now - req.session.lastReqTime) /1000;
+      if (dif > maxTimeWithoutReq) {
+        delete req.session.user;
+      } else {
+        console.log('Actualizamos lastReqTime');
+        req.session.lastReqTime = now;
+      }
+    }
     next();
 });
 

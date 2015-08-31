@@ -1,6 +1,6 @@
 *                    { margin: 0; padding: 0; }
-body                 { font: 16px Georgia, serif; }
-
+body                 { font: 16px Georgia, serif; background-color: #E1F5FE;}
+h2					 {color: #fff; }
 #page-wrap           { margin: 2% auto; color: white; }
 #page-wrap > .main   { border: 1px solid #999; padding: 1%; 
 	                   margin-bottom: 1px; color: black;}
@@ -16,6 +16,27 @@ nav span             { margin: 0px 10px 0px 0px;
 .right 				 {float: right;}
 
 .quiz_img 			 { height: 150px; float: left;}
-
+.login			{color: #fff;}
 #img-author			 {width: 200px; height: 250px; padding-left: 30%;}
 #img-author	img 	 {width: 85%; height: 70%;}
+#h1	{
+	font-weight: bold;
+	 background: -webkit-linear-gradient(#26A69A, #004D40); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#26A69A, #004D40); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#26A69A, #004D40); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#26A69A, #004D40); /* Standard syntax */
+}
+#h1 span a {
+	text-decoration: none;
+	color: #fff;
+	border: 1px solid #80CBC4;
+}
+#h1 span a:hover{ background-color: #B2DFDB; color: #000;}
+
+#comentarios{
+	border: 3px solid #4DB6AC;
+	width: 400px;
+	opacity: .8;
+	margin-left: 27%;
+	padding: 2%;
+}
