@@ -59,3 +59,4 @@ sequelize.sync().then(function(){
 		};
 	});
 });
+
